@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   filli_info.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/31 00:41:32 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/31 14:21:32 by waraissi         ###   ########.fr       */
+/*   Created: 2023/03/31 14:23:07 by waraissi          #+#    #+#             */
+/*   Updated: 2023/03/31 14:25:17 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-int main(int ac, char **av)
+void	init_args(t_info *vars, int ac, char **av)
 {
-	t_info	vars;
-
-	if (ac == 5 || ac == 6)
-	{
-		init_args(&vars, ac, av);
-	}
+	
 }

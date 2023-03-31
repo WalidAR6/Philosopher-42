@@ -4,13 +4,7 @@ CC = cc
 
 FLAGS = -Wall -Wextra -Werror -pthread
 
-SRC = src/philo.c\
-		utils/ft_atoi.c\
-		utils/is_digite.c\
-		src/parser.c\
-		src/create_philo.c\
-		src/routine.c\
-		src/action.c
+SRC = src/philo.c
 
 OBJ = $(SRC:.c=.o)
 
