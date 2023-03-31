@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 00:38:37 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/31 14:22:02 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:42:54 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef struct s_philo
 
 
 /*Link Functions*/
-void	init_args(t_info *vars, int ac, char **av);
+int		parser(char **av);
+int		philo_args(t_info *vars, int ac, char **av);
+int		ft_atoi(const char *str);
 
 #endif

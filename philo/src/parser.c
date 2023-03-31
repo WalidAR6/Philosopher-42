@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/31 00:41:32 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/31 15:54:47 by waraissi         ###   ########.fr       */
+/*   Created: 2023/03/31 14:59:38 by waraissi          #+#    #+#             */
+/*   Updated: 2023/03/31 15:51:15 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-int main(int ac, char **av)
+int	parser(char **av)
 {
-	t_info	vars;
+	int	i;
+	int	j;
 
-	if (ac == 5 || ac == 6)
+	i = 1;
+	while (av[i])
 	{
-		if (!parser(av) || !philo_args(&vars, ac, av))
-			return (0);
+		j = 0;
+		while (av[i][j])
+		{
+			if (av[i][j] < '0' || av[i][j] > '9')
+			{
+				write(2, "Error\n", 7);
+				return (0);
+			}
+			j++;
+		}
+		i++;
 	}
+	return (1);
 }
