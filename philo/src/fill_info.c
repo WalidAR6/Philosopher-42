@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 14:23:07 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/01 02:11:24 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/01 02:49:21 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	init_mutex(t_info *info)
 
 	i = 0;
 	pthread_mutex_init(&info->print, NULL);
-	printf("%ld\n",sizeof(pthread_mutex_t));
-	printf("%d\n", info->num_philo);
 	info->fork = malloc(info->num_philo * sizeof(pthread_mutex_t));
 	if (!info->fork)
 		return ;
