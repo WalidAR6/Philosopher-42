@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/31 00:41:32 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/01 02:11:55 by waraissi         ###   ########.fr       */
+/*   Created: 2023/04/01 02:18:20 by waraissi          #+#    #+#             */
+/*   Updated: 2023/04/01 02:34:47 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-int main(int ac, char **av)
+void	is_eating(t_philo *vars, int i)
 {
-	t_info	info;
+	put_logs(vars, printf, i, "is eating");
+	usleep(vars->info->tte*1000);
+}
 
-	if (ac == 5 || ac == 6)
-	{
-		if (!parser(av) || !philo_args(&info, ac, av))
-			return (0);
-		init_mutex(&info);
-		create_philos(&info);
-		destroy_mutex(&info);
-	}
+void	is_thinking(t_philo *vars, int i)
+{
+	put_logs(vars, printf, i, "is thinking");
+	usleep(1000);
 }

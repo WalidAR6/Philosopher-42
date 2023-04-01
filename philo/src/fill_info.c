@@ -6,11 +6,42 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 14:23:07 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/31 15:51:19 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/01 02:11:24 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
+
+void	init_mutex(t_info *info)
+{
+	int i;
+
+	i = 0;
+	pthread_mutex_init(&info->print, NULL);
+	printf("%ld\n",sizeof(pthread_mutex_t));
+	printf("%d\n", info->num_philo);
+	info->fork = malloc(info->num_philo * sizeof(pthread_mutex_t));
+	if (!info->fork)
+		return ;
+	while (i < info->num_philo)
+	{
+		pthread_mutex_init(&info->fork[i], NULL);
+		i++;
+	}
+}
+
+void	destroy_mutex(t_info *info)
+{
+	int i;
+
+	i = 0;
+	while (i < info->num_philo)
+	{
+		pthread_mutex_destroy(&info->fork[i]);
+		i++;
+	}
+	pthread_mutex_destroy(&info->print);
+}
 
 void	init(t_info *vars, int ac)
 {

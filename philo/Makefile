@@ -9,7 +9,8 @@ SRC = src/philo.c\
 		src/fill_info.c\
 		src/ft_atoi.c\
 		src/philo_creation.c\
-		src/routine.c
+		src/routine.c\
+		src/actions.c
 
 OBJ = $(SRC:.c=.o)
 
