@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:34:59 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/01 01:45:41 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/01 14:03:44 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ void	start_action(t_info *vars)
     {
         pthread_join(vars->th[i].th, NULL);
         i++;
-    }	
+	}
 }
 
 void	create_philos(t_info *info)
 {
-	info->th = malloc(info->num_philo * sizeof(t_info));
+	info->th = malloc(info->num_philo * sizeof(t_philo));
 	if (!info->th)
 		return ;
 	init_philos(info);

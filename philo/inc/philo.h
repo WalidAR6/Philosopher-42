@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 00:38:37 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/01 02:34:20 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/01 14:09:36 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ void	destroy_mutex(t_info *info);
 void    put_logs(t_philo *vars, int (*f)(const char *,...), int i, char *str);
 void	is_eating(t_philo *vars, int i);
 void	is_thinking(t_philo *vars, int i);
+void	is_sleeping(t_philo *vars, int i);
 
 #endif
