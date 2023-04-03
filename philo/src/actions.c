@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 02:18:20 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/03 03:59:07 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/03 16:02:16 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	is_eating(t_philo *vars, int i)
 	usleep(vars->info->tte * 1000);
 	pthread_mutex_unlock(&vars->info->fork[vars->right_fork]);
 	pthread_mutex_unlock(&vars->info->fork[vars->left_fork]);
+	vars->num_of_eat++;
 }
 
 void	is_thinking(t_philo *vars, int i)

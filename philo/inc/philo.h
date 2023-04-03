@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 00:38:37 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/03 04:06:06 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/03 15:52:38 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_info
 	int				num_to_eat;
 	struct s_philo	*th;
 	int				*res;
+	pthread_t		death_checker;
 	pthread_mutex_t	*fork;
 	pthread_mutex_t print;
 }				t_info;
@@ -41,6 +42,7 @@ typedef struct s_philo
 	unsigned long	last_eat;
 	int				left_fork;
 	int				right_fork;
+	int				num_of_eat;
 	t_info			*info;
 }				t_philo;
 

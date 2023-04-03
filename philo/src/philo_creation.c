@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:34:59 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/03 03:58:01 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/03 15:37:35 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_philos(t_info *vars)
 		vars->th[i].id = i;
 		vars->th[i].right_fork = i;
 		vars->th[i].left_fork = (i % vars->num_philo) + 1;
+		vars->th[i].num_of_eat = 0;
 		vars->th[i].info = vars;
 		i++;
 	}
