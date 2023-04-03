@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:54:50 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/02 01:33:18 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/03 03:10:17 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*routine(void *arg)
 
 	vars = arg;
 	if (vars->id % 2 != 0)
-		usleep (1000);
+		usleep (100);
 	while (1)
 	{
 		is_eating(vars, vars->id);

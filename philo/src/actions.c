@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 02:18:20 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/02 03:55:23 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/03 03:59:07 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,33 +19,28 @@ void	my_usleep()
 
 void	is_eating(t_philo *vars, int i)
 {
-	if (vars->info->num_philo == 1)
-	{
-		pthread_mutex_lock(&vars->info->fork[vars->right_fork]);
-		put_logs(vars, printf, vars->id, "has take the right fork");
-		pthread_mutex_unlock(&vars->info->fork[vars->right_fork]);
-	}
-	else
-	{
-		pthread_mutex_lock(&vars->info->fork[vars->right_fork]);
-		put_logs(vars, printf, vars->id, "has take the right fork");
-		pthread_mutex_lock(&vars->info->fork[vars->left_fork]);
-		put_logs(vars, printf, vars->id, "has take the left fork");
-		put_logs(vars, printf, i, "is eating");
-		usleep(vars->info->tte*1000);
-		pthread_mutex_unlock(&vars->info->fork[vars->right_fork]);
-		pthread_mutex_unlock(&vars->info->fork[vars->left_fork]);
-	}
+	pthread_mutex_lock(&vars->info->fork[vars->right_fork]);
+	put_logs(vars, printf, vars->id, "has take the right fork");
+	pthread_mutex_lock(&vars->info->fork[vars->left_fork]);
+	put_logs(vars, printf, vars->id, "has take the left fork");
+	put_logs(vars, printf, i, "is eating");
+	usleep(vars->info->tte * 1000);
+	pthread_mutex_unlock(&vars->info->fork[vars->right_fork]);
+	pthread_mutex_unlock(&vars->info->fork[vars->left_fork]);
 }
 
 void	is_thinking(t_philo *vars, int i)
 {
 	put_logs(vars, printf, i, "is thinking");
-	usleep(1000);
 }
 
 void	is_sleeping(t_philo *vars, int i)
 {
 	put_logs(vars, printf, i, "is sleeping");
 	usleep(vars->info->tts * 1000);
+}
+
+int	is_dead(t_info	*vars)
+{
+	return (0);
 }
