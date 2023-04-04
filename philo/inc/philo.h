@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 00:38:37 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/04 02:25:06 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/04 16:25:25 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_info
 	pthread_t		death_checker;
 	pthread_mutex_t	*fork;
 	pthread_mutex_t print;
+	pthread_mutex_t death;
 }				t_info;
 
 typedef struct s_philo
@@ -46,6 +47,7 @@ typedef struct s_philo
 	int				left_fork;
 	int				right_fork;
 	int				num_of_eat;
+	int				is_dead;
 	t_info			*info;
 }				t_philo;
 
@@ -61,7 +63,7 @@ void   			put_logs(t_philo *vars, int i, char *str);
 void			is_eating(t_philo *vars, int i);
 void			is_thinking(t_philo *vars, int i);
 void			is_sleeping(t_philo *vars, int i);
-int				is_dead(t_info	*vars);
+void				is_dead(t_info	*vars);
 unsigned long	get_time(t_info *vars);
 void			my_usleep(t_info *vars, unsigned long	mic_sec);
 
