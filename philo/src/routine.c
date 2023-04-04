@@ -6,16 +6,16 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:54:50 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/03 03:10:17 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/04 02:33:39 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void    put_logs(t_philo *vars, int (*f)(const char *,...), int i, char *str)
+void    put_logs(t_philo *vars, int i, char *str)
 {
     pthread_mutex_lock(&vars->info->print);
-    f("%d %s\n", i, str);
+    printf("%ldms\t%d %s\n",get_time(vars->info) - vars->info->start_time, i, str);
     pthread_mutex_unlock(&vars->info->print);
 }
 
@@ -25,7 +25,7 @@ void	*routine(void *arg)
 
 	vars = arg;
 	if (vars->id % 2 != 0)
-		usleep (100);
+		usleep(100);
 	while (1)
 	{
 		is_eating(vars, vars->id);

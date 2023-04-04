@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 00:38:37 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/03 15:52:38 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/04 02:25:06 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ typedef struct s_info
 	unsigned long 	tte;
 	unsigned long 	tts;
 	int				num_to_eat;
+	unsigned long	start_time;
+	struct timeval	time;
+	struct timeval	time_sleep;
 	struct s_philo	*th;
 	int				*res;
 	pthread_t		death_checker;
@@ -47,17 +50,19 @@ typedef struct s_philo
 }				t_philo;
 
 /*Link Functions*/
-int		parser(char **av);
-int		philo_args(t_info *vars, int ac, char **av);
-int		ft_atoi(const char *str);
-void	create_philos(t_info *info);
-void	*routine(void *arg);
-void	init_mutex(t_info *info);
-void	destroy_mutex(t_info *info);
-void    put_logs(t_philo *vars, int (*f)(const char *,...), int i, char *str);
-void	is_eating(t_philo *vars, int i);
-void	is_thinking(t_philo *vars, int i);
-void	is_sleeping(t_philo *vars, int i);
-int		is_dead(t_info	*vars);
+int				parser(char **av);
+int				philo_args(t_info *vars, int ac, char **av);
+int				ft_atoi(const char *str);
+void			create_philos(t_info *info);
+void			*routine(void *arg);
+void			init_mutex(t_info *info);
+void			destroy_mutex(t_info *info);
+void   			put_logs(t_philo *vars, int i, char *str);
+void			is_eating(t_philo *vars, int i);
+void			is_thinking(t_philo *vars, int i);
+void			is_sleeping(t_philo *vars, int i);
+int				is_dead(t_info	*vars);
+unsigned long	get_time(t_info *vars);
+void			my_usleep(t_info *vars, unsigned long	mic_sec);
 
 #endif

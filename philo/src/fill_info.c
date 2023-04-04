@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 14:23:07 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/01 02:49:21 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/04 00:11:30 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	init(t_info *vars, int ac)
 	vars->num_to_eat = -1;
 	if (ac == 6)
 		vars->num_to_eat = vars->res[4];
+	vars->start_time = get_time(vars);
 }
 
 int	philo_args(t_info *vars, int ac, char **av)
