@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 00:38:37 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/05 14:33:31 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:31:47 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ void			is_sleeping(t_philo *vars, int i);
 void			is_dead(t_info	*vars);
 unsigned long	get_time(t_info *vars);
 void			my_usleep(t_info *vars, unsigned long	mic_sec);
+void			*check_death(void *arg);
 
 #endif

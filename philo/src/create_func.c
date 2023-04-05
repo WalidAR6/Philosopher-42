@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   create_func.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:54:50 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/05 14:35:52 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:32:29 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,31 @@ void	*routine(void *arg)
 			is_sleeping(vars, vars->id);
 			is_thinking(vars, vars->id);
 		}
+	}
+	return (NULL);
+}
+
+void	*check_death(void *arg)
+{
+	t_philo *vars;
+	long long i;
+
+	i = 0;
+	vars = arg;
+	while (1)
+	{
+		if (get_time(vars->info) - vars[i % vars->info->num_philo].last_eat > vars->info->ttd)
+		{
+			if (get_time(vars->info) - vars[i % vars->info->num_philo].last_eat > vars->info->ttd)
+			{
+				put_logs(vars, i % vars->info->num_philo, "died");
+				pthread_mutex_lock(&vars->info->death);
+				vars[i % vars->info->num_philo].is_dead = 1;
+				vars->info->g_death = 1;
+				break ;
+			}
+		}	
+		i++;
 	}
 	return (NULL);
 }

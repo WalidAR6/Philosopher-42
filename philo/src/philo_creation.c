@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:34:59 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/05 16:05:57 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:32:18 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,31 +28,6 @@ void	init_philos(t_info *vars)
 		vars->th[i].last_eat = get_time(vars->th->info);
 		i++;
 	}
-}
-
-void	*check_death(void *arg)
-{
-	t_philo *vars;
-	long long i;
-
-	i = 0;
-	vars = arg;
-	while (1)
-	{
-		if (get_time(vars->info) - vars[i % vars->info->num_philo].last_eat > vars->info->ttd)
-		{
-			if(get_time(vars->info) - vars[i % vars->info->num_philo].last_eat > vars->info->ttd)
-			{
-				put_logs(vars, i % vars->info->num_philo, "died");
-				pthread_mutex_lock(&vars->info->death);
-				vars[i % vars->info->num_philo].is_dead = 1;
-				vars->info->g_death = 1;
-				break ;
-			}
-		}	
-		i++;
-	}
-	return (NULL);
 }
 
 void	start_action(t_info *vars)

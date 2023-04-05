@@ -9,7 +9,7 @@ SRC = src/philo.c\
 		src/fill_info.c\
 		src/ft_atoi.c\
 		src/philo_creation.c\
-		src/routine.c\
+		src/create_func.c\
 		src/actions.c\
 		src/utils.c
 
