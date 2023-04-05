@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 23:54:39 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/05 02:48:09 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:18:18 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ unsigned long	get_time(t_info *vars)
 
 void	my_usleep(t_info *vars, unsigned long mic_sec)
 {
-	unsigned long current;
+	unsigned long	b_time;
+	unsigned long	s_time;
 
-	current = get_time(vars);
-	while (1)
+	b_time = (mic_sec / 10) * 9;
+	s_time = mic_sec - b_time;
+	usleep(b_time * 1000);	
+	while (get_time(vars)< s_time)
 	{
-		if (get_time(vars) - current >= mic_sec)
-			break ;
-		else
-			usleep(50);
+		sleep(10);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 00:38:37 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/05 02:04:32 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:33:31 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ typedef struct s_info
 	unsigned long 	tte;
 	unsigned long 	tts;
 	int				num_to_eat;
+	int				ac;
 	unsigned long	start_time;
+	int				g_death;
 	struct timeval	time;
 	struct timeval	time_sleep;
 	struct s_philo	*th;
@@ -55,9 +57,9 @@ typedef struct s_philo
 int				parser(char **av);
 int				philo_args(t_info *vars, int ac, char **av);
 int				ft_atoi(const char *str);
-void			create_philos(t_info *info);
+int				create_philos(t_info *info);
 void			*routine(void *arg);
-void			init_mutex(t_info *info);
+int				init_mutex(t_info *info);
 void			destroy_mutex(t_info *info);
 void   			put_logs(t_philo *vars, int i, char *str);
 void			is_eating(t_philo *vars, int i);

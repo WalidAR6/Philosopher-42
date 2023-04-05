@@ -6,13 +6,13 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 14:23:07 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/04 13:52:24 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:34:25 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void	init_mutex(t_info *info)
+int	init_mutex(t_info *info)
 {
 	int i;
 
@@ -21,12 +21,13 @@ void	init_mutex(t_info *info)
 	pthread_mutex_init(&info->death, NULL);
 	info->fork = malloc(info->num_philo * sizeof(pthread_mutex_t));
 	if (!info->fork)
-		return ;
+		return (1);
 	while (i < info->num_philo)
 	{
 		pthread_mutex_init(&info->fork[i], NULL);
 		i++;
 	}
+	return (0);
 }
 
 void	destroy_mutex(t_info *info)
@@ -52,7 +53,9 @@ void	init(t_info *vars, int ac)
 	vars->num_to_eat = -1;
 	if (ac == 6)
 		vars->num_to_eat = vars->res[4];
+	vars->ac  = ac;
 	vars->start_time = get_time(vars);
+	vars->g_death = 0;
 }
 
 int	philo_args(t_info *vars, int ac, char **av)
