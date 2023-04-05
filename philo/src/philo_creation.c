@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:34:59 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/04 16:31:00 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/05 01:50:50 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,8 @@ void	*check_death(void *arg)
 		pthread_mutex_lock(&vars->info->death);
 		if (get_time(vars->info) - vars[i % vars->info->num_philo].last_eat > vars->info->ttd)
 		{
-			pthread_mutex_lock(&vars->info->print);
-			printf("filo die %d\n", i % vars->info->num_philo);
+			put_logs(vars, i % vars->info->num_philo, "died");
 			vars[i % vars->info->num_philo].is_dead = 1;
-			pthread_mutex_unlock(&vars->info->print);
 			break ;
 		}	
 		else
@@ -65,7 +63,6 @@ void	start_action(t_info *vars)
         pthread_create(&vars->th[i].th, NULL, &routine, &vars->th[i]);
         i++;
     }
-	usleep(100);
 	pthread_create(&vars->death_checker, NULL, &check_death, vars->th);
     i = 0;
     while (i < vars->num_philo)
@@ -89,7 +86,7 @@ void	create_philos(t_info *info)
 	while (1)
 	{
 		if (info->th[i % info->num_philo].is_dead == 1)
-			exit(0) ;
+			return ;
 		i++;
 	}
 }

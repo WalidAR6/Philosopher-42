@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:54:50 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/04 16:49:38 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/05 02:30:41 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*routine(void *arg)
 
 	vars = arg;
 	if (vars->id % 2 != 0)
-		usleep(100);
+		my_usleep(vars->info, 10);
 	while (1)
 	{
 		if (vars->info->num_philo == 1)
