@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 00:38:37 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/05 16:31:47 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/06 17:59:58 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 typedef struct s_info
 {
 	int				num_philo;
+	int				k;
 	unsigned long 	ttd;
 	unsigned long 	tte;
 	unsigned long 	tts;

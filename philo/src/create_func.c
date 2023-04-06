@@ -6,23 +6,24 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:54:50 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/05 16:32:29 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/06 18:13:26 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void    put_logs(t_philo *vars, int i, char *str)
+void	put_logs(t_philo *vars, int i, char *str)
 {
-    pthread_mutex_lock(&vars->info->print);
+	pthread_mutex_lock(&vars->info->print);
 	if (!vars->info->g_death)
-    	printf("%ldms\t%d %s\n",get_time(vars->info) - vars->info->start_time, i, str);
-    pthread_mutex_unlock(&vars->info->print);
+		printf("%ldms\t%d %s\n",
+			get_time(vars->info) - vars->info->start_time, i, str);
+	pthread_mutex_unlock(&vars->info->print);
 }
 
 void	*routine(void *arg)
 {
-	t_philo *vars;
+	t_philo	*vars;
 
 	vars = arg;
 	if (vars->id % 2 != 0)
@@ -34,7 +35,7 @@ void	*routine(void *arg)
 		if (vars->info->num_philo == 1)
 		{
 			pthread_mutex_lock(&vars->info->fork[vars->right_fork]);
-			put_logs(vars, vars->id, "has take the right fork");
+			put_logs(vars, vars->id, "has taken a fork");
 		}
 		else
 		{
@@ -48,25 +49,23 @@ void	*routine(void *arg)
 
 void	*check_death(void *arg)
 {
-	t_philo *vars;
-	long long i;
+	t_philo		*vars;
+	long long	i;
 
 	i = 0;
 	vars = arg;
 	while (1)
 	{
+		pthread_mutex_lock(&vars->info->death);
 		if (get_time(vars->info) - vars[i % vars->info->num_philo].last_eat > vars->info->ttd)
 		{
-			if (get_time(vars->info) - vars[i % vars->info->num_philo].last_eat > vars->info->ttd)
-			{
-				put_logs(vars, i % vars->info->num_philo, "died");
-				pthread_mutex_lock(&vars->info->death);
-				vars[i % vars->info->num_philo].is_dead = 1;
-				vars->info->g_death = 1;
-				break ;
-			}
+			put_logs(vars, i % vars->info->num_philo, "died");
+			vars[i % vars->info->num_philo].is_dead = 1;
+			vars->info->g_death = 1;
+			break ;
 		}	
 		i++;
+		pthread_mutex_unlock(&vars->info->death);
 	}
 	return (NULL);
 }
