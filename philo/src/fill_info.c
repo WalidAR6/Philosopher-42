@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 14:23:07 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/06 17:31:19 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/07 03:25:42 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	init_mutex(t_info *info)
 
 	i = 0;
 	pthread_mutex_init(&info->print, NULL);
-	pthread_mutex_init(&info->death, NULL);
 	info->fork = malloc(info->num_philo * sizeof(pthread_mutex_t));
 	if (!info->fork)
 		return (1);
@@ -41,7 +40,6 @@ void	destroy_mutex(t_info *info)
 		i++;
 	}
 	pthread_mutex_destroy(&info->print);
-	pthread_mutex_destroy(&info->death);
 }
 
 void	init(t_info *vars, int ac)
@@ -54,7 +52,7 @@ void	init(t_info *vars, int ac)
 	if (ac == 6)
 		vars->num_to_eat = vars->res[4];
 	vars->ac = ac;
-	vars->start_time = get_time(vars);
+	vars->start_time = get_time();
 	vars->g_death = 0;
 }
 
