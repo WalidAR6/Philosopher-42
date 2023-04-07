@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 00:41:32 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/06 17:35:28 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/07 08:25:40 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ int	main(int ac, char **av)
 		if (!parser(av) || !philo_args(&info, ac, av))
 			return (1);
 		if (init_mutex(&info) || create_philos(&info))
+		{
+			free(info.fork);
+			free(info.th);
 			return (1);
+		}
 		destroy_mutex(&info);
 	}
 	else

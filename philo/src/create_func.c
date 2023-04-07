@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:54:50 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/07 05:57:20 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/07 06:12:38 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void	*check_death(void *arg)
 			vars->info->g_death = 1;
 			break ;
 		}
+		else if (vars[i].num_of_eat == vars->info->ac)
+			return (NULL);
 		i++;
 		if (i == vars->info->num_philo)
 			i = 0;
