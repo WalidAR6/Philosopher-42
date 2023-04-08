@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:34:59 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/07 08:28:53 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/08 18:04:21 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	init_philos(t_info *vars)
 		vars->th[i].right_fork = i;
 		vars->th[i].left_fork = (i % vars->num_philo) + 1;
 		vars->th[i].num_of_eat = 0;
-		vars->th[i].is_dead = 0;
 		vars->th[i].info = vars;
 		vars->th[i].last_eat = get_time();
 		i++;

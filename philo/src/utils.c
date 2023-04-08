@@ -6,13 +6,13 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 23:54:39 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/07 08:29:06 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/08 18:04:53 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-unsigned long	get_time(void)
+unsigned long	get_time()
 {
 	unsigned long	l;
 	struct timeval	time;
