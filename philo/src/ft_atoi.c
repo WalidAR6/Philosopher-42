@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:13:53 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/09 02:04:54 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/09 05:11:48 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_atoi(const char *str)
 	return (res);
 }
 
-time_t	ft_atotime(char *str)
+time_t	ft_atoi_t(char *str)
 {
 	time_t		i;
 	time_t		tmp;

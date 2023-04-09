@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 00:38:37 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/09 01:39:58 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/09 05:19:33 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,14 @@
 /*Declare Structs*/
 typedef struct s_info
 {
-	int				num_philo;
-	int				k;
-	time_t	ttd;
-	time_t	tte;
-	time_t	tts;
-	int				num_to_eat;
 	int				ac;
-	time_t	start_time;
+	int				num_philo;
+	time_t			ttd;
+	time_t			tte;
+	time_t			tts;
+	int				num_to_eat;
+	time_t			start_time;
 	int				g_death;
-	int				*res;
 	struct s_philo	*th;
 	pthread_t		death_checker;
 	pthread_mutex_t	*fork;
@@ -44,7 +42,7 @@ typedef struct s_philo
 {
 	int				id;
 	pthread_t		th;
-	unsigned long	last_eat;
+	time_t			last_eat;
 	int				left_fork;
 	int				right_fork;
 	int				num_of_eat;
@@ -63,8 +61,9 @@ void			put_logs(t_philo *vars, int i, char *str);
 void			is_eating(t_philo *vars, int i);
 void			is_thinking(t_philo *vars, int i);
 void			is_sleeping(t_philo *vars, int i);
-unsigned long	get_time();
+time_t			get_time(void);
 void			my_usleep(unsigned long mic_sec);
 void			*check_death(void *arg);
-time_t			ft_atotime(char *str);
+time_t			ft_atoi_t(char *str);
+
 #endif

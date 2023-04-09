@@ -6,15 +6,29 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 23:54:39 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/08 18:04:53 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/09 05:20:29 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-unsigned long	get_time()
+void	put_logs(t_philo *vars, int i, char *str)
 {
-	unsigned long	l;
+	int	g_d;
+
+	pthread_mutex_lock(&vars->info->mutex);
+	g_d = vars->info->g_death;
+	pthread_mutex_unlock(&vars->info->mutex);
+	pthread_mutex_lock(&vars->info->print);
+	if (!g_d)
+		printf("%ldms\t%d %s\n",
+			get_time() - vars->info->start_time, i + 1, str);
+	pthread_mutex_unlock(&vars->info->print);
+}
+
+time_t	get_time(void)
+{
+	time_t			l;
 	struct timeval	time;
 
 	gettimeofday(&time, NULL);

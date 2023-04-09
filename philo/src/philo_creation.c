@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:34:59 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/08 18:04:21 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/09 05:09:52 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,7 @@ int	create_philos(t_info *info)
 {
 	info->th = malloc(info->num_philo * sizeof(t_philo));
 	if (!info->th)
-	{
-		free(info->res);
 		return (1);
-	}
 	init_philos(info);
 	start_action(info);
 	return (0);
