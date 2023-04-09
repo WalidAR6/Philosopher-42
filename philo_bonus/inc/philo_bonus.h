@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/07 08:33:14 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/07 08:40:04 by waraissi         ###   ########.fr       */
+/*   Created: 2023/04/09 06:21:57 by waraissi          #+#    #+#             */
+/*   Updated: 2023/04/09 06:31:18 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,20 @@
 # include <sys/time.h>
 
 /*Declare Structs*/
-
-
-
-
-
-
-
-
-
-
+typedef struct s_info
+{
+	int				ac;
+	int				num_philo;
+	time_t			ttd;
+	time_t			tte;
+	time_t			tts;
+	int				num_to_eat;
+}				t_info;
 
 /*Link Functions*/
-int	b_parser(char **av);
+int		parser(char **av);
+int		philo_args(t_info *vars, int ac, char **av);
+int		ft_atoi(const char *str);
+time_t	ft_atoi_t(char *str);
 
 #endif
