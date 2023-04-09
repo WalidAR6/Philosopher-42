@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 23:54:39 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/09 05:20:29 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/09 07:30:35 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,44 @@ void	my_usleep(unsigned long mic_sec)
 	current = get_time();
 	while (get_time() - current < mic_sec)
 		usleep(100);
+}
+
+int	ft_atoi(const char *str)
+{
+	int		i;
+	int		res;
+
+	i = 0;
+	res = 0;
+	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = res * 10 + str[i] - '0';
+		if (res < 0)
+			return (-1);
+		i++;
+	}
+	return (res);
+}
+
+time_t	ft_atoi_t(char *str)
+{
+	time_t		i;
+	time_t		tmp;
+	time_t		res;
+
+	i = 0;
+	res = 0;
+	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		tmp = res;
+		res = res * 10 + str[i] - '0';
+		if (res < tmp)
+			return (0);
+		i++;
+	}
+	return (res);
 }
