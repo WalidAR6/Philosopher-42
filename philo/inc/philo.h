@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 00:38:37 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/08 18:05:06 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/09 01:39:58 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ typedef struct s_info
 {
 	int				num_philo;
 	int				k;
-	unsigned long	ttd;
-	unsigned long	tte;
-	unsigned long	tts;
+	time_t	ttd;
+	time_t	tte;
+	time_t	tts;
 	int				num_to_eat;
 	int				ac;
-	unsigned long	start_time;
+	time_t	start_time;
 	int				g_death;
 	int				*res;
 	struct s_philo	*th;
@@ -66,5 +66,5 @@ void			is_sleeping(t_philo *vars, int i);
 unsigned long	get_time();
 void			my_usleep(unsigned long mic_sec);
 void			*check_death(void *arg);
-
+time_t			ft_atotime(char *str);
 #endif

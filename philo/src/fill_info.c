@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 14:23:07 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/08 18:04:16 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/09 02:04:43 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,40 +47,22 @@ void	destroy_mutex(t_info *info)
 	pthread_mutex_destroy(&info->mutex);
 }
 
-void	init(t_info *vars, int ac)
+int	philo_args(t_info *vars, int ac, char **av)
 {
-	vars->num_philo = vars->res[0];
-	vars->ttd = vars->res[1];
-	vars->tte = vars->res[2];
-	vars->tts = vars->res[3];
-	vars->num_to_eat = -1;
+	vars->num_philo = ft_atoi(av[1]);
+	vars->ttd = ft_atotime(av[2]);
+	vars->tte = ft_atotime(av[3]);
+	vars->tts = ft_atotime(av[4]);
+	vars->num_to_eat = -2;
 	if (ac == 6)
-		vars->num_to_eat = vars->res[4];
+		vars->num_to_eat = ft_atoi(av[5]);
 	vars->ac = ac;
 	vars->start_time = get_time();
 	vars->g_death = 0;
-}
-
-int	philo_args(t_info *vars, int ac, char **av)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	j = 0;
-	vars->res = (int *) malloc((ac - 1) * sizeof(int));
-	if (!vars->res)
-		return (0);
-	while (av[++j])
+	if (vars->num_philo == -1 || !vars->ttd || !vars->tts || !vars->tte|| vars->num_to_eat == -1)
 	{
-		vars->res[++i] = ft_atoi(av[j]);
-		if (vars->res[i] < 0 || vars->res[0] == 0)
-		{
-			write(2, "Error\n", 7);
-			free(vars->res);
-			return (0);
-		}
+		write(2, "Error\n", 7);
+		return (0);
 	}
-	init(vars, ac);
 	return (1);
 }

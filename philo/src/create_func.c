@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:54:50 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/08 18:05:24 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/09 01:31:04 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	put_logs(t_philo *vars, int i, char *str)
 	pthread_mutex_lock(&vars->info->print);
 	if (!ok)
 		printf("%ldms\t%d %s\n",
-			get_time() - vars->info->start_time, i, str);
+			get_time() - vars->info->start_time, i + 1, str);
 	pthread_mutex_unlock(&vars->info->print);
 }
 
@@ -62,7 +62,7 @@ void	*routine(void *arg)
 void	*check_death(void *arg)
 {
 	t_philo			*vars;
-	unsigned long	less_ttd;
+	time_t	less_ttd;
 	int				def;
 	int				i;
 
