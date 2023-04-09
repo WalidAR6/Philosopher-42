@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 23:54:39 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/09 07:30:35 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/09 07:33:11 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	ft_atoi(const char *str)
 
 	i = 0;
 	res = 0;
-	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
@@ -72,7 +72,7 @@ time_t	ft_atoi_t(char *str)
 
 	i = 0;
 	res = 0;
-	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
