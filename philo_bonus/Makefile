@@ -6,7 +6,7 @@ FLAGS = -Wall -Wextra -Werror -pthread
 
 SRC = src/philo_bonus.c\
 		src/parser_bonus.c\
-		src/ft_atoi.c
+		src/utils_bonus.c
 
 OBJ = $(SRC:.c=.o)
 
