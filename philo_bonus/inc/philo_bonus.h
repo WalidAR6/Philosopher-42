@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 06:21:57 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/09 06:31:18 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/09 06:51:21 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <pthread.h>
 # include <sys/time.h>
+# include <semaphore.h>
 
 /*Declare Structs*/
 typedef struct s_info
@@ -29,6 +30,7 @@ typedef struct s_info
 	time_t			tte;
 	time_t			tts;
 	int				num_to_eat;
+	sem_t			*forks;
 }				t_info;
 
 /*Link Functions*/
