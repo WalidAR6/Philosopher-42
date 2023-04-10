@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:54:50 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/10 09:06:19 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/10 19:42:18 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ void	death_loop(t_philo *vars, time_t less_ttd, int def)
 		pthread_mutex_unlock(&vars->info->mutex);
 		if (less_ttd > vars->info->ttd)
 		{
-			// put_logs(vars, i, "is died");
 			pthread_mutex_lock(&vars->info->mutex);
 			vars->info->g_death = 1;
 			pthread_mutex_unlock(&vars->info->mutex);
+			my_usleep(5);
 			printf("%ldms\t%d %s\n",
 				get_time() - vars->info->start_time, i, "is died");
 			return ;
