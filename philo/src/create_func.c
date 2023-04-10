@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:54:50 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/09 05:30:57 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/10 09:06:19 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 void	routine_loop(t_philo *vars, int g_d)
 {
-	while (!g_d)
+	while (1 && !g_d)
 	{
 		pthread_mutex_lock(&vars->info->mutex);
 		g_d = vars->info->g_death;
 		pthread_mutex_unlock(&vars->info->mutex);
+		if (g_d)
+			return ;
 		if (vars->info->ac == 6 && vars->num_of_eat == vars->info->num_to_eat)
 			return ;
 		if (vars->info->num_philo == 1)
@@ -30,6 +32,8 @@ void	routine_loop(t_philo *vars, int g_d)
 		}
 		else
 		{
+			if (g_d)
+				return ;
 			is_eating(vars, vars->id);
 			is_sleeping(vars, vars->id);
 			is_thinking(vars, vars->id);
@@ -44,7 +48,7 @@ void	*routine(void *arg)
 
 	g_d = 0;
 	vars = arg;
-	if (vars->id % 2 != 0)
+	if (vars->id % 2 == 0)
 		my_usleep(10);
 	routine_loop(vars, g_d);
 	return (NULL);
@@ -63,11 +67,13 @@ void	death_loop(t_philo *vars, time_t less_ttd, int def)
 		pthread_mutex_unlock(&vars->info->mutex);
 		if (less_ttd > vars->info->ttd)
 		{
-			put_logs(vars, i, "is died");
+			// put_logs(vars, i, "is died");
 			pthread_mutex_lock(&vars->info->mutex);
 			vars->info->g_death = 1;
 			pthread_mutex_unlock(&vars->info->mutex);
-			break ;
+			printf("%ldms\t%d %s\n",
+				get_time() - vars->info->start_time, i, "is died");
+			return ;
 		}
 		else if (def == 0)
 			return ;
