@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 00:38:37 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/10 08:59:54 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/10 09:18:35 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void			is_eating(t_philo *vars, int i);
 void			is_thinking(t_philo *vars, int i);
 void			is_sleeping(t_philo *vars, int i);
 time_t			get_time(void);
-void			my_usleep(time_t mic_sec);
+void			my_usleep(time_t mil_sec);
 void			*check_death(void *arg);
 time_t			ft_atoi_t(char *str);
 

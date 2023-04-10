@@ -2,7 +2,7 @@ NAME = philo
 
 CC = cc
 
-FLAGS = -Wall -Wextra -Werror -pthread -fsanitize=thread -g
+FLAGS = -Wall -Wextra -Werror -pthread
 
 SRC = src/philo.c\
 		src/parser.c\
