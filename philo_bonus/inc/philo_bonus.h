@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 06:21:57 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/09 18:32:00 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/10 09:24:32 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ typedef struct s_philo
 {
 	int		id;
 	pid_t	ph;
-	int		left_fork;
-	int		right_fork;
 	t_info	*info;
 }				t_philo;
 
