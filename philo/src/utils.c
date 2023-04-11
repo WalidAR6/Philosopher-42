@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 23:54:39 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/11 02:14:28 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/11 02:45:22 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ time_t	get_time(void)
 {
 	time_t			l;
 	struct timeval	time;
-
+	
 	gettimeofday(&time, NULL);
 	l = (time.tv_sec * 1000) + (time.tv_usec / 1000);
 	return (l);
@@ -45,9 +45,11 @@ time_t	get_time(void)
 void	my_usleep(time_t mil_sec)
 {
 	time_t	current;
+	time_t	b_part;
 	
+	b_part = mil_sec * 9 / 10;
 	current = get_time();
-	usleep(mil_sec * 0.9 * 1000);
+	usleep(b_part * 1000);
 	while (get_time() - current < mil_sec)
 		usleep(100);
 }
