@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 09:00:37 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/09 18:31:40 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/10 20:58:49 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ time_t	get_time(void)
 	return (l);
 }
 
-void	my_usleep(unsigned long mic_sec)
+void	my_usleep(time_t mic_sec)
 {
-	unsigned long	current;
+	time_t	current;
 
 	current = get_time();
 	while (get_time() - current < mic_sec)

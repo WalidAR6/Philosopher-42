@@ -6,15 +6,43 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 06:23:51 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/10 10:08:56 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/10 23:00:26 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo_bonus.h"
 
+void	child_p(t_philo *vars)
+{
+	if (vars->id % 2 != 0)
+		my_usleep(10);
+	while (1)
+	{
+		sem_wait(vars->info->forks);
+		put_logs(vars->info->philos, vars->id, "has taken a fork");
+		sem_wait(vars->info->forks);
+		put_logs(vars->info->philos, vars->id, "has taken a fork");
+		put_logs(vars->info->philos, vars->id, "is eating");
+		my_usleep(vars->info->tte);
+		sem_post(vars->info->forks);
+		sem_post(vars->info->forks);
+	}
+}
+
 void	start_action(t_info *vars)
 {
-	(void)vars;
+	int i;
+
+	i = 0;
+	while (i < vars->num_philo)
+	{
+		if ((vars->philos[i].ph = fork()) == -1)
+			exit(1);
+		if (vars->philos[i].ph == 0)
+			child_p(&vars->philos[i]);
+		i++;
+	}
+	parent_p();
 }
 
 void	init(t_info *vars)
@@ -45,8 +73,9 @@ int	main(int ac, char **av)
 	}
 	if (!parser(av) || !philo_args(&vars, ac, av))
 		return (1);
-	//initilze the forks with semaphore using semaphore open
 	init(&vars);
 	start_action(&vars);
+	sem_close(vars.forks);
+	sem_unlink("/sema");
 	return (0);
 }

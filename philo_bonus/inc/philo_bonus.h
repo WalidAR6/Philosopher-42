@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 06:21:57 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/10 09:24:32 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/10 21:39:29 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <pthread.h>
 # include <sys/time.h>
+# include <sys/wait.h>
 # include <semaphore.h>
 
 /*Declare Structs*/
@@ -49,6 +50,6 @@ int		ft_atoi(const char *str);
 time_t	ft_atoi_t(char *str);
 void	put_logs(t_philo *vars, int i, char *str);
 time_t	get_time(void);
-void	my_usleep(unsigned long mic_sec);
+void	my_usleep(time_t mic_sec);
 
 #endif
