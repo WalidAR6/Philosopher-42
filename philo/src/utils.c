@@ -6,24 +6,30 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 23:54:39 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/10 09:18:28 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/11 02:14:28 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void	put_logs(t_philo *vars, int i, char *str)
+void	put_logs(t_philo *vars, int i, char *str, int index)
 {
 	int	g_d;
 
-	pthread_mutex_lock(&vars->info->mutex);
-	g_d = vars->info->g_death;
-	pthread_mutex_unlock(&vars->info->mutex);
-	pthread_mutex_lock(&vars->info->print);
-	if (!g_d)
+	if (index == 0)
 		printf("%ldms\t%d %s\n",
-			get_time() - vars->info->start_time, i, str);
-	pthread_mutex_unlock(&vars->info->print);
+	 		get_time() - vars->info->start_time, i, str);
+	else
+	{
+		pthread_mutex_lock(&vars->info->mutex);
+		g_d = vars->info->g_death;
+		pthread_mutex_unlock(&vars->info->mutex);
+		pthread_mutex_lock(&vars->info->print);
+		if (!g_d)
+			printf("%ldms\t%d %s\n",
+				get_time() - vars->info->start_time, i, str);
+		pthread_mutex_unlock(&vars->info->print);
+	}
 }
 
 time_t	get_time(void)
@@ -41,6 +47,7 @@ void	my_usleep(time_t mil_sec)
 	time_t	current;
 	
 	current = get_time();
+	usleep(mil_sec * 0.9 * 1000);
 	while (get_time() - current < mil_sec)
 		usleep(100);
 }

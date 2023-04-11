@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 00:38:37 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/10 09:18:35 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/11 02:10:49 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_info
 	time_t			start_time;
 	int				g_death;
 	struct s_philo	*th;
+	struct timeval	time;
 	pthread_t		death_checker;
 	pthread_mutex_t	*fork;
 	pthread_mutex_t	mutex;
@@ -57,7 +58,7 @@ int				create_philos(t_info *info);
 void			*routine(void *arg);
 int				init_mutex(t_info *info);
 void			destroy_mutex(t_info *info);
-void			put_logs(t_philo *vars, int i, char *str);
+void			put_logs(t_philo *vars, int i, char *str, int index);
 void			is_eating(t_philo *vars, int i);
 void			is_thinking(t_philo *vars, int i);
 void			is_sleeping(t_philo *vars, int i);

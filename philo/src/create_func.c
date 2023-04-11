@@ -6,34 +6,33 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:54:50 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/10 19:42:18 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/11 02:12:02 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void	routine_loop(t_philo *vars, int g_d)
+void	routine_loop(t_philo *vars)
 {
-	while (1 && !g_d)
+	int	g_d;
+	
+	g_d = 0;
+	while (!g_d)
 	{
 		pthread_mutex_lock(&vars->info->mutex);
 		g_d = vars->info->g_death;
 		pthread_mutex_unlock(&vars->info->mutex);
-		if (g_d)
-			return ;
 		if (vars->info->ac == 6 && vars->num_of_eat == vars->info->num_to_eat)
 			return ;
 		if (vars->info->num_philo == 1)
 		{
 			pthread_mutex_lock(&vars->info->fork[vars->right_fork]);
-			put_logs(vars, vars->id, "has taken a fork");
+			put_logs(vars, vars->id, "has taken a fork", 1);
 			pthread_mutex_unlock(&vars->info->fork[vars->right_fork]);
 			return ;
 		}
 		else
 		{
-			if (g_d)
-				return ;
 			is_eating(vars, vars->id);
 			is_sleeping(vars, vars->id);
 			is_thinking(vars, vars->id);
@@ -44,13 +43,11 @@ void	routine_loop(t_philo *vars, int g_d)
 void	*routine(void *arg)
 {
 	t_philo	*vars;
-	int		g_d;
 
-	g_d = 0;
 	vars = arg;
 	if (vars->id % 2 == 0)
-		my_usleep(10);
-	routine_loop(vars, g_d);
+		my_usleep(50);
+	routine_loop(vars);
 	return (NULL);
 }
 
@@ -70,9 +67,7 @@ void	death_loop(t_philo *vars, time_t less_ttd, int def)
 			pthread_mutex_lock(&vars->info->mutex);
 			vars->info->g_death = 1;
 			pthread_mutex_unlock(&vars->info->mutex);
-			my_usleep(5);
-			printf("%ldms\t%d %s\n",
-				get_time() - vars->info->start_time, i, "is died");
+			put_logs(vars, i, "is died", 0);
 			return ;
 		}
 		else if (def == 0)
