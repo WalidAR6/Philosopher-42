@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 23:54:39 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/11 02:45:22 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/12 02:55:57 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ int	ft_atoi(const char *str)
 time_t	ft_atoi_t(char *str)
 {
 	time_t		i;
-	time_t		tmp;
 	time_t		res;
 
 	i = 0;
@@ -85,9 +84,8 @@ time_t	ft_atoi_t(char *str)
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		tmp = res;
 		res = res * 10 + str[i] - '0';
-		if (res < tmp)
+		if (res < 0)
 			return (0);
 		i++;
 	}
