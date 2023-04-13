@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 06:21:57 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/10 21:39:29 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/13 02:02:28 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <pthread.h>
 # include <sys/time.h>
 # include <sys/wait.h>
+# include <sys/types.h>
+# include <signal.h>
 # include <semaphore.h>
 
 /*Declare Structs*/
@@ -33,14 +35,19 @@ typedef struct s_info
 	time_t			start_time;
 	int				num_to_eat;
 	sem_t			*forks;
+	sem_t			*print;
 	struct s_philo	*philos;
 }				t_info;
 
 typedef struct s_philo
 {
-	int		id;
-	pid_t	ph;
-	t_info	*info;
+	int			id;
+	pid_t		ph;
+	pthread_t	helper;
+	time_t		last_eat;
+	int			is_died;
+	int			num_of_eat;
+	t_info		*info;
 }				t_philo;
 
 /*Link Functions*/
