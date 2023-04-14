@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 23:54:39 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/12 02:55:57 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/14 05:40:50 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ void	put_logs(t_philo *vars, int i, char *str, int index)
 	int	g_d;
 
 	if (index == 0)
+	{
 		printf("%ldms\t%d %s\n",
 	 		get_time() - vars->info->start_time, i, str);
+	}
 	else
 	{
 		pthread_mutex_lock(&vars->info->mutex);
