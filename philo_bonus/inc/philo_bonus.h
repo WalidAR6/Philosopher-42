@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 06:21:57 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/13 02:02:28 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/14 02:05:25 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		parser(char **av);
 int		philo_args(t_info *vars, int ac, char **av);
 int		ft_atoi(const char *str);
 time_t	ft_atoi_t(char *str);
-void	put_logs(t_philo *vars, int i, char *str);
+void	put_logs(t_philo *vars, int i, char *str, int index);
 time_t	get_time(void);
 void	my_usleep(time_t mic_sec);
 

@@ -6,19 +6,31 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 09:00:37 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/13 16:43:47 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/14 02:30:34 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo_bonus.h"
 
-void	put_logs(t_philo *vars, int i, char *str)
+void	put_logs(t_philo *vars, int i, char *str, int index)
 {
-	sem_wait(vars->info->print);
-	if(!vars->is_died)
+	int	g_d;
+
+	if (index == 0)
+	{
+		sem_wait(vars->info->print);
 		printf("%ldms\t%d %s\n",
-			get_time() - vars->info->start_time, i + 1, str);
-	sem_post(vars->info->print);
+	 		get_time() - vars->info->start_time, i + 1, str);
+	}
+	else
+	{
+		sem_wait(vars->info->print);
+		g_d = vars->is_died;
+		if (!g_d)
+			printf("%ldms\t%d %s\n",
+				get_time() - vars->info->start_time, i, str);
+		sem_post(vars->info->print);
+	}
 }
 
 int	ft_atoi(const char *str)
