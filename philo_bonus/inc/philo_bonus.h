@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 06:21:57 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/14 02:05:25 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/15 02:52:04 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,11 @@ typedef struct s_info
 	time_t			tts;
 	time_t			start_time;
 	int				num_to_eat;
+	pthread_t	h_m_eat;
+	int				count;
 	sem_t			*forks;
 	sem_t			*print;
+	sem_t			*wait;
 	struct s_philo	*philos;
 }				t_info;
 

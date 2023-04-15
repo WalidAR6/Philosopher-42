@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 09:00:37 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/14 02:30:34 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/14 17:12:37 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	put_logs(t_philo *vars, int i, char *str, int index)
 		g_d = vars->is_died;
 		if (!g_d)
 			printf("%ldms\t%d %s\n",
-				get_time() - vars->info->start_time, i, str);
+				get_time() - vars->info->start_time, i + 1, str);
 		sem_post(vars->info->print);
 	}
 }
