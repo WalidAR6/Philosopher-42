@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:47:43 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/16 02:01:49 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/16 09:12:33 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*func(void *arg)
 {
-	t_philo *vars;
+	t_philo	*vars;
 
 	vars = arg;
 	while (1)
@@ -67,8 +67,8 @@ void	child_p(t_philo *vars)
 
 void	start_action(t_info *vars)
 {
-	int i;
-	int status;
+	int	i;
+	int	status;
 
 	i = 0;
 	vars->start_time = get_time();

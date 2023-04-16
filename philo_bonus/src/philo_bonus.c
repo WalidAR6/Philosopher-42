@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 06:23:51 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/16 01:54:51 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/16 09:47:00 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int ac, char **av)
 	init(&vars);
 	unlink_semaphores();
 	start_action(&vars);
+	free(vars.philos);
 	close_semaphores(&vars);
 	return (0);
 }

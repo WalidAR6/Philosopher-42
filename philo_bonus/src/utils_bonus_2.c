@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:54:16 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/16 02:03:10 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/16 09:47:50 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	kill_p(t_info *vars)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < vars->num_philo)
@@ -23,20 +23,24 @@ void	kill_p(t_info *vars)
 		i++;
 	}
 	free(vars->philos);
+	close_semaphores(vars);
 	exit(0);
 }
 
 void	init(t_info *vars)
 {
-	int	i;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+	int	i;
 
 	i = 0;
-	vars->forks = sem_open("/sema", O_CREAT , 0644, vars->num_philo);
-	vars->print = sem_open("/print", O_CREAT , 0644, 1);
+	vars->forks = sem_open("/sema", O_CREAT, 0644, vars->num_philo);
+	vars->print = sem_open("/print", O_CREAT, 0644, 1);
 	vars->philos = malloc(vars->num_philo * sizeof(t_philo));
 	if (!vars->philos)
+	{
+		close_semaphores(vars);
 		return ;
-	while(i < vars->num_philo)
+	}
+	while (i < vars->num_philo)
 	{
 		vars->philos[i].id = i;
 		vars->philos[i].last_eat = get_time();

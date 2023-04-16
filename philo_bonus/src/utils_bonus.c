@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 09:00:37 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/16 01:27:16 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/16 09:20:34 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	put_logs(t_philo *vars, int i, char *str, int index)
 	{
 		sem_wait(vars->info->print);
 		printf("%ldms\t%d %s\n",
-	 		get_time() - vars->info->start_time, i + 1, str);
+			get_time() - vars->info->start_time, i + 1, str);
 	}
 	else
 	{
@@ -49,13 +49,14 @@ int	ft_atoi(const char *str)
 			return (-1);
 		i++;
 	}
+	if (res == 0)
+		return (-1);
 	return (res);
 }
 
 time_t	ft_atoi_t(char *str)
 {
 	time_t		i;
-	time_t		tmp;
 	time_t		res;
 
 	i = 0;
@@ -64,14 +65,16 @@ time_t	ft_atoi_t(char *str)
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		tmp = res;
 		res = res * 10 + str[i] - '0';
-		if (res < tmp)
+		if (res < 0)
 			return (0);
 		i++;
 	}
+	if (res == 0)
+		return (-1);
 	return (res);
 }
+
 time_t	get_time(void)
 {
 	time_t			l;
