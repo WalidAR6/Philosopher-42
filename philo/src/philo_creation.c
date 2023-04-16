@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:34:59 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/14 05:40:11 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/16 07:05:14 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	init_philos(t_info *vars)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	while (i < vars->num_philo)
@@ -25,6 +25,7 @@ void	init_philos(t_info *vars)
 		vars->th[i].num_of_eat = 0;
 		vars->th[i].info = vars;
 		vars->th[i].last_eat = get_time();
+		vars->th[i].done_eating = 0;
 		i++;
 	}
 	i = 0;
@@ -49,14 +50,13 @@ void	start_action(t_info *vars)
 		pthread_create(&vars->th[i].th, NULL, &routine, &vars->th[i]);
 		i++;
 	}
-	pthread_create(&vars->death_checker, NULL, &check_death, vars->th);
 	i = 0;
 	while (i < vars->num_philo)
 	{
-		pthread_join(vars->th[i].th, NULL);
+		pthread_detach(vars->th[i].th);
 		i++;
 	}
-	pthread_join(vars->death_checker, NULL);
+	check_death(vars->th);
 }
 
 int	create_philos(t_info *info)

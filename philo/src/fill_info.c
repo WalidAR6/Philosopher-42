@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 14:23:07 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/10 08:14:50 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/16 07:04:44 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int	philo_args(t_info *vars, int ac, char **av)
 		vars->num_to_eat = ft_atoi(av[5]);
 	vars->start_time = get_time();
 	vars->g_death = 0;
-	if (vars->num_philo == -1 || !vars->ttd
-		|| !vars->tts || !vars->tte || vars->num_to_eat == -1)
+	if (vars->num_philo == -1 || vars->num_to_eat == -1
+		|| !vars->ttd || !vars->tts || !vars->tte)
 	{
 		write(2, "Error\n", 7);
 		return (0);

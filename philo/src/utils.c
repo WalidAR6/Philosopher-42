@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 23:54:39 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/14 05:40:50 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/16 07:06:18 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ void	put_logs(t_philo *vars, int i, char *str, int index)
 	int	g_d;
 
 	if (index == 0)
-	{
 		printf("%ldms\t%d %s\n",
-	 		get_time() - vars->info->start_time, i, str);
-	}
+			get_time() - vars->info->start_time, i, str);
 	else
 	{
 		pthread_mutex_lock(&vars->info->mutex);
@@ -38,7 +36,7 @@ time_t	get_time(void)
 {
 	time_t			l;
 	struct timeval	time;
-	
+
 	gettimeofday(&time, NULL);
 	l = (time.tv_sec * 1000) + (time.tv_usec / 1000);
 	return (l);
@@ -48,7 +46,7 @@ void	my_usleep(time_t mil_sec)
 {
 	time_t	current;
 	time_t	b_part;
-	
+
 	b_part = mil_sec * 9 / 10;
 	current = get_time();
 	usleep(b_part * 1000);
@@ -72,6 +70,8 @@ int	ft_atoi(const char *str)
 			return (-1);
 		i++;
 	}
+	if (res == 0 || res > 200)
+		return (-1);
 	return (res);
 }
 
@@ -91,5 +91,7 @@ time_t	ft_atoi_t(char *str)
 			return (0);
 		i++;
 	}
+	if (res < 60)
+		return (0);
 	return (res);
 }

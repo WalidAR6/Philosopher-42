@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 00:38:37 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/14 05:40:25 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/16 06:08:09 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_philo
 	int				*left_fork;
 	int				right_fork;
 	int				num_of_eat;
+	int				done_eating;
 	t_info			*info;
 }				t_philo;
 
@@ -64,7 +65,7 @@ void			is_thinking(t_philo *vars, int i);
 void			is_sleeping(t_philo *vars, int i);
 time_t			get_time(void);
 void			my_usleep(time_t mil_sec);
-void			*check_death(void *arg);
+void			check_death(t_philo *vars);
 time_t			ft_atoi_t(char *str);
 
 #endif
