@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:54:50 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/14 05:42:28 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/16 01:33:44 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	routine_loop(t_philo *vars)
 {
 	int	g_d;
-	
+
 	g_d = 0;
 	while (!g_d)
 	{
