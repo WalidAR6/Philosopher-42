@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 23:54:39 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/16 07:06:18 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/16 09:17:14 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	ft_atoi(const char *str)
 			return (-1);
 		i++;
 	}
-	if (res == 0 || res > 200)
+	if (res == 0)
 		return (-1);
 	return (res);
 }
@@ -91,7 +91,7 @@ time_t	ft_atoi_t(char *str)
 			return (0);
 		i++;
 	}
-	if (res < 60)
+	if (res == 0)
 		return (0);
 	return (res);
 }
