@@ -6,12 +6,14 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 06:21:57 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/15 02:52:04 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/16 01:49:52 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_BONUS_H
 # define PHILO_BONUS_H
+
+# define FINISH_MEAL 10
 
 /*Include Librairies*/
 # include <stdio.h>
@@ -34,11 +36,8 @@ typedef struct s_info
 	time_t			tts;
 	time_t			start_time;
 	int				num_to_eat;
-	pthread_t	h_m_eat;
-	int				count;
 	sem_t			*forks;
 	sem_t			*print;
-	sem_t			*wait;
 	struct s_philo	*philos;
 }				t_info;
 
@@ -61,5 +60,13 @@ time_t	ft_atoi_t(char *str);
 void	put_logs(t_philo *vars, int i, char *str, int index);
 time_t	get_time(void);
 void	my_usleep(time_t mic_sec);
+void	init(t_info *vars);
+void	unlink_semaphores(void);
+void	close_semaphores(t_info *vars);
+void	start_action(t_info *vars);
+void	child_p(t_philo *vars);
+void	routine(t_philo *vars);
+void	*func(void *arg);
+void	kill_p(t_info *vars);
 
 #endif

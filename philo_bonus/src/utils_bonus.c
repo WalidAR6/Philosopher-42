@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 09:00:37 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/14 17:12:37 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/16 01:27:16 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	my_usleep(time_t mil_sec)
 {
 	time_t	current;
 	time_t	b_part;
-	
+
 	b_part = mil_sec * 9 / 10;
 	current = get_time();
 	usleep(b_part * 1000);
