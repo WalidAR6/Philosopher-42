@@ -8,7 +8,8 @@ SRC = src/philo_bonus.c\
 		src/parser_bonus.c\
 		src/utils_bonus.c\
 		src/utils_bonus_2.c\
-		src/actions_bonus.c
+		src/actions_bonus.c\
+		src/routine_bonus.c
 
 OBJ = $(SRC:.c=.o)
 

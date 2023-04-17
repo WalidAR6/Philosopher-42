@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:54:16 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/16 09:47:50 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/17 02:55:50 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	init(t_info *vars)
 
 	i = 0;
 	vars->forks = sem_open("/sema", O_CREAT, 0644, vars->num_philo);
-	vars->print = sem_open("/print", O_CREAT, 0644, 1);
+	vars->print = sem_open("/printing", O_CREAT, 0644, 1);
 	vars->philos = malloc(vars->num_philo * sizeof(t_philo));
 	if (!vars->philos)
 	{
@@ -45,7 +45,6 @@ void	init(t_info *vars)
 		vars->philos[i].id = i;
 		vars->philos[i].last_eat = get_time();
 		vars->philos[i].num_of_eat = 0;
-		vars->philos[i].is_died = 0;
 		vars->philos[i].info = vars;
 		i++;
 	}
@@ -54,12 +53,12 @@ void	init(t_info *vars)
 void	unlink_semaphores(void)
 {
 	sem_unlink("/sema");
-	sem_unlink("/print");
+	sem_unlink("/printing");
 }
 
 void	close_semaphores(t_info *vars)
 {
+	unlink_semaphores();
 	sem_close(vars->forks);
 	sem_close(vars->print);
-	unlink_semaphores();
 }

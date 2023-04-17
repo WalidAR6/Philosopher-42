@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 06:21:57 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/16 01:49:52 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/17 03:02:44 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ typedef struct s_philo
 	pid_t		ph;
 	pthread_t	helper;
 	time_t		last_eat;
-	int			is_died;
 	int			num_of_eat;
 	t_info		*info;
 }				t_philo;
@@ -68,5 +67,8 @@ void	child_p(t_philo *vars);
 void	routine(t_philo *vars);
 void	*func(void *arg);
 void	kill_p(t_info *vars);
+void	is_eating(t_philo *vars);
+void	is_sleeping(t_philo *vars);
+void	is_thinking(t_philo *vars);
 
 #endif

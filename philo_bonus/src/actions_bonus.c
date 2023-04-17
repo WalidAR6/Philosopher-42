@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:47:43 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/16 09:12:33 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/17 03:02:06 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,23 @@
 void	*func(void *arg)
 {
 	t_philo	*vars;
+	time_t	last_eat;
+	time_t	saved;
 
 	vars = arg;
 	while (1)
 	{
-		if (get_time() - vars->last_eat > vars->info->ttd)
+		sem_wait(vars->info->print);
+		saved = vars->last_eat;
+		sem_post(vars->info->print);
+		last_eat = get_time() - saved;
+		if (last_eat > vars->info->ttd)
 		{
-			vars->is_died = 1;
 			put_logs(vars->info->philos, vars->id, "is died", 0);
 			free(vars->info->philos);
 			exit(0);
 		}
-		usleep(50);
+		usleep(100);
 	}
 	return (NULL);
 }
@@ -34,7 +39,7 @@ void	*func(void *arg)
 void	routine(t_philo *vars)
 {
 	if (vars->id % 2)
-		usleep(100);
+		usleep(50);
 	while (1)
 	{
 		if (vars->num_of_eat == vars->info->num_to_eat)
@@ -42,19 +47,9 @@ void	routine(t_philo *vars)
 			free(vars->info->philos);
 			exit(FINISH_MEAL);
 		}
-		sem_wait(vars->info->forks);
-		put_logs(vars->info->philos, vars->id, "has taken a fork", 1);
-		sem_wait(vars->info->forks);
-		put_logs(vars->info->philos, vars->id, "has taken a fork", 1);
-		put_logs(vars->info->philos, vars->id, "is eating", 1);
-		vars->last_eat = get_time();
-		vars->num_of_eat++;
-		my_usleep(vars->info->tte);
-		sem_post(vars->info->forks);
-		sem_post(vars->info->forks);
-		put_logs(vars->info->philos, vars->id, "is sleeping", 1);
-		my_usleep(vars->info->tts);
-		put_logs(vars->info->philos, vars->id, "is thinking", 1);
+		is_eating(vars);
+		is_sleeping(vars);
+		is_thinking(vars);
 	}
 }
 
