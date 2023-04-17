@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:54:16 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/17 02:55:50 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/17 03:15:44 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	kill_p(t_info *vars)
 		kill(vars->philos[i].ph, SIGKILL);
 		i++;
 	}
-	free(vars->philos);
 	close_semaphores(vars);
+	free(vars->philos);
 	exit(0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:47:43 by waraissi          #+#    #+#             */
-/*   Updated: 2023/04/17 03:02:06 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/04/17 03:10:01 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	*func(void *arg)
 	return (NULL);
 }
 
-void	routine(t_philo *vars)
+void	routine_bonus(t_philo *vars)
 {
 	if (vars->id % 2)
 		usleep(50);
@@ -57,7 +57,7 @@ void	child_p(t_philo *vars)
 {
 	pthread_create(&vars->helper, NULL, &func, vars);
 	pthread_detach(vars->helper);
-	routine(vars);
+	routine_bonus(vars);
 }
 
 void	start_action(t_info *vars)
